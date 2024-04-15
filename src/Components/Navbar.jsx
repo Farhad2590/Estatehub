@@ -1,11 +1,12 @@
 // import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../assets/Logo.png"
 
 const Navbar = () => {
     const Navs =
         <>
-            <li><a>Home</a></li>
-            <li><a>Update Profile</a></li>
+            <Link to="/"><a>Home</a></Link>
+            <Link ><a>Update Profile</a></Link>
         </>
     return (
         <div className="navbar bg-base-100">
@@ -22,7 +23,7 @@ const Navbar = () => {
                     <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-600">
                         <img src={logo} alt="" />
                     </div>
-                    <span className="self-center text-3xl font-semibold">GlamourEstateHub</span>
+                    <span className="self-center text-xl md:text-2xl lg:text-3xl font-semibold">GlamourEstateHub</span>
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -31,7 +32,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <Link to="/login"><a className="btn">Log in</a></Link>
             </div>
         </div>
     );

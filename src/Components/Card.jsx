@@ -1,21 +1,21 @@
 import { CiLocationOn } from "react-icons/ci";
 import { RiPriceTag2Line } from "react-icons/ri";
 import { FaArrowRight } from "react-icons/fa";
-import { useState } from "react";
+
 
 
 
 const Card = ({ luxury_state }) => {
     // console.log(luxury_state);
     const { estate_title, image, description, location, area, price, status } = luxury_state;
-    const [isHovered, setIsHovered] = useState(false);
+
     const cardStyle = {
         backgroundImage: `url(${image})`,
-        backgroundSize: 'cover',    // Cover the entire size of the div
-        backgroundPosition: 'center' // Center the background image
+        backgroundSize: 'cover',    
+        backgroundPosition: 'center'
     };
     return (
-        <div  className="card mb-10" style={cardStyle}>
+        <div className="card mb-10" style={cardStyle}>
 
             <div data-aos="fade-up-right" data-aos-duration="3000" className="card-details p-5" >
                 <div className="pt-40 px-5">
@@ -35,7 +35,7 @@ const Card = ({ luxury_state }) => {
                     </div>
                     <div className="flex items-center">
                         <p className="text-white">View Details</p>
-                        <FaArrowRight className="text-white"/>
+                        <FaArrowRight className="text-white" />
                     </div>
                 </div>
             </div>
