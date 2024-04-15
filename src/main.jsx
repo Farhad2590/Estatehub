@@ -10,6 +10,7 @@ import Root from './Root/Root';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import CardsDetails from './Pages/CardsDetails';
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader:()=>fetch('./data.json')
+        loader: () => fetch('./data.json')
+        
       },
       {
         path: "/login",
@@ -28,6 +30,13 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/cardsdata/:id",
+        // loader: ({params}) => fetch(`./data.json/${params.id}`),
+        loader:() => fetch('../public/data.json'),
+        element: <CardsDetails></CardsDetails>
+        
       }
     ]
   },

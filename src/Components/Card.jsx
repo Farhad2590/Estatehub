@@ -1,13 +1,14 @@
 import { CiLocationOn } from "react-icons/ci";
 import { RiPriceTag2Line } from "react-icons/ri";
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 
 
 
 const Card = ({ luxury_state }) => {
     // console.log(luxury_state);
-    const { estate_title, image, description, location, area, price, status } = luxury_state;
+    const { id ,estate_title, image, description, location, area, price, status } = luxury_state;
 
     const cardStyle = {
         backgroundImage: `url(${image})`,
@@ -33,10 +34,10 @@ const Card = ({ luxury_state }) => {
                             <h6 className="text-xl text-white">{price}</h6>
                         </div>
                     </div>
-                    <div className="flex items-center">
+                    <Link to={`/cardsdata/${id}`} className="flex items-center">
                         <p className="text-white">View Details</p>
                         <FaArrowRight className="text-white" />
-                    </div>
+                    </Link>
                 </div>
             </div>
 
