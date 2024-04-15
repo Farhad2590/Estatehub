@@ -5,9 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      rotate: {
+        '360': '360deg', // Ensure this is enabled if not already available
+      }
+    },
   },
   plugins: [require("daisyui")],
-  
+
 }
 
