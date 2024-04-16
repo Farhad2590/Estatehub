@@ -4,25 +4,38 @@ import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useHooks from '../Hooks/useHooks';
+import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+import { useState } from 'react';
 const Register = () => {
 
+    const [showPassword, setShowPassword] = useState(false)
     const { createUser } = useHooks();
     // hookfrom 
     const {
         register,
         handleSubmit,
-
         formState: { errors },
     } = useForm()
     const onSubmit = (data) => {
-        const{email,password} = data;
-        createUser(email,password)
-        .then(result =>{
-            toast.success("Registration successful!");
-            console.log(result);
-        })
+        const { email, password } = data;
+        if (password.length < 6) {
+            toast('Password should be 6 character or more')
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast('Password should have at lease one Uppercase letter')
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast('Password should have at lease one Uppercase letter')
+            return;
+        }
+        createUser(email, password)
+            .then(result => {
+                toast.success("Registration successful!");
+                console.log(result);
+            })
     }
-    
+
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <div className="hero-overlay bg-opacity-60"></div>
@@ -48,11 +61,14 @@ const Register = () => {
                                 <label htmlFor="photoUrl" className="block">PhotoUrl</label>
                                 <input type="text" name="photoUrl" id="photoUrl" placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md" />
                             </div>
-                            <div className="text-lg">
-                                <label htmlFor="password" className="block">Password</label>
-                                <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md"
+                            <div className="text-lg relative">
+                                <label htmlFor="password" className="block dark:text-gray-600">Password</label>
+                                <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md "
                                     {...register("password", { required: true })} />
                                 {errors.password && <span className='text-red-600 font-bold'>!!!Password is required!!!</span>}
+                                <span className="absolute top-11 right-3" onClick={() => setShowPassword(!showPassword)}>
+                                    {showPassword ? <FaRegEyeSlash /> : <FaEye />}
+                                </span>
                             </div>
                             <div className='text-center'>
                                 <button className='btn bg-orange-400 text-white outline-none border-none'>Sign up</button>

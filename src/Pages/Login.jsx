@@ -5,10 +5,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from '../Components/SocialLogin';
 import useHooks from '../Hooks/useHooks';
-import { useNavigate,useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+import { useState } from 'react';
 
 
 const Login = () => {
+
+    const [showPassword, setShowPassword] = useState(false)
     const { signInUser } = useHooks();
     // console.log(signInUser);
     const navigate = useNavigate()
@@ -24,23 +28,31 @@ const Login = () => {
     } = useForm()
     const onSubmit = (data) => {
         const { email, password } = data;
+        if (password.length < 6) {
+            toast('Password should be 6 character or more')
+        }
+        else if (!/[A-Z]/.test(password)) {
+            toast('Password should have at lease one Uppercase letter')
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            toast('Password should have at lease one Uppercase letter')
+            return;
+        }
         signInUser(email, password)
-            // .then(result => {
-            //     toast.success("Login successful!");
-            //     console.log(result);
-            // })
-            .then(result =>{
+            .then(result => {
                 toast.success("Login successful!");
-                if(result.user){
+                if (result.user) {
                     navigate(from)
-                   
                 }
             })
             .catch(error => {
                 toast.error("Login failed. Please try again."); // Display an error toast if registration fails
                 console.error(error);
             });
+
     }
+
 
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${backgroundImage})` }}>
@@ -56,12 +68,26 @@ const Login = () => {
                                     {...register("email", { required: true })} />
                                 {errors.email && <span className='text-red-600 font-bold'>!!!Email is required!!!</span>}
                             </div>
-                            <div className="text-lg">
+                            <div className="text-lg relative">
                                 <label htmlFor="password" className="block dark:text-gray-600">Password</label>
-                                <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md "
+                                <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md "
                                     {...register("password", { required: true })} />
                                 {errors.password && <span className='text-red-600 font-bold'>!!!Password is required!!!</span>}
+                                <span className="absolute top-11 right-3" onClick={() => setShowPassword(!showPassword)}>
+                                    {showPassword ? <FaRegEyeSlash /> : <FaEye />}
+                                </span>
                             </div>
+                            {/* <div className="text-lg relative">
+                            <label htmlFor="password" className="block dark:text-gray-600">Password</label>
+                                <input className=" w-full px-4 py-3 rounded-md"
+                                    type={showPassword ? "text" : "password"}
+                                    name="password"
+                                    placeholder="Enter Password"
+                                    id="" required />
+                                <span className="absolute top-11 right-3" onClick={() => setShowPassword(!showPassword)}>
+                                    {showPassword ? <FaRegEyeSlash /> : <FaEye />} 
+                                </span>
+                            </div> */}
                             <div className='text-center'>
                                 <button className='btn bg-orange-400 text-white outline-none border-none'>Sign In</button>
                             </div>
