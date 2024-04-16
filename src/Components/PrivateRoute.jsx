@@ -1,23 +1,17 @@
 
-import { Navigate,useLocation } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import useHooks from '../Hooks/useHooks';
 
-const PrivateRoute = ({children}) => {
-    const {user,loader} = useHooks()
+const PrivateRoute = ({ children }) => {
+    const { user, loader } = useHooks()
     const location = useLocation()
     // console.log(location);
-    if(loader){
-        return <div className='text-center'>
-            <span className="loading loading-infinity loading-lg"></span>
-            <span className="loading loading-dots loading-lg"></span>
-            <span className="loading loading-bars loading-lg"></span>
-            <span className="loading loading-dots loading-lg"></span>
-            <span className="loading loading-infinity loading-lg"></span>
-        </div>
+    if (loader) {
+        return <span className="loading loading-dots loading-lg"></span>
     }
 
-    if(!user){
-        return <Navigate to='/login' state={location?.pathname || '/'}/>
+    if (!user) {
+        return <Navigate to='/login' state={location?.pathname || '/'} />
     }
     return (
         <div>

@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/FirebaseConfig";
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { signOut } from "firebase/auth/cordova";
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -14,7 +14,7 @@ const githubProvider = new GithubAuthProvider();
 
 const FirebaseProvider = ({ children }) => {
     const [user, setUser] = useState(null)
-    const [loader,setLoader] = useState(true)
+    const [loader, setLoader] = useState(true)
     // console.log(loader);
 
     console.log(user);
@@ -42,7 +42,7 @@ const FirebaseProvider = ({ children }) => {
     }
 
     //logout
-    const logout =()=>{
+    const logout = () => {
         setUser(null)
         signOut(auth)
         toast.success("Logout successful!");
@@ -51,10 +51,8 @@ const FirebaseProvider = ({ children }) => {
     //Observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUser(user);
-                setLoader(false)
-            }
+            setUser(user);
+            setLoader(false)
         });
         return () => unsubscribe()
     }, [])

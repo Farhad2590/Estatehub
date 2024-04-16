@@ -13,6 +13,8 @@ import Register from './Pages/Register';
 import CardsDetails from './Pages/CardsDetails';
 import FirebaseProvider from './FirbaseProvider/FirebaseProvider';
 import PrivateRoute from './Components/PrivateRoute';
+import Updated from './Pages/Updated';
+import Completed from './Pages/Completed';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +24,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('./data.json')
-
+        loader: () => fetch('/data.json')
       },
       {
         path: "/login",
@@ -36,12 +37,23 @@ const router = createBrowserRouter([
       {
         path: "/cardsdata/:id",
         // loader: ({params}) => fetch(`./data.json/${params.id}`),
-        loader: () => fetch('../public/data.json'),
+        loader: () => fetch('/data.json'),
         element: <PrivateRoute>
           <CardsDetails></CardsDetails>
         </PrivateRoute>,
-
-      }
+      },
+      {
+        path: "/updated",
+        element: <PrivateRoute>
+          <Updated></Updated>
+        </PrivateRoute>,
+      },
+      {
+        path: "/completed",
+        element: <PrivateRoute>
+          <Completed></Completed>
+        </PrivateRoute>,
+      },
     ]
   },
 ]);

@@ -8,7 +8,8 @@ const Navbar = () => {
     const Navs =
         <>
             <Link to="/"><a>Home</a></Link>
-            <Link ><a>Update Profile</a></Link>
+            <Link to="/updated"><a>Update Profile</a></Link>
+            <Link to="/completed"><a>Completed Deals</a></Link>
         </>
     return (
         <div className="navbar bg-base-100">
@@ -28,10 +29,10 @@ const Navbar = () => {
                     <span className="self-center text-xl md:text-2xl lg:text-3xl font-semibold">GlamourEstateHub</span>
                 </a>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+            <div className="navbar-center hidden lg:flex gap-4">
+               
                     {Navs}
-                </ul>
+
             </div>
             <div className="navbar-end">
                 {
