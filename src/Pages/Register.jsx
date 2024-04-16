@@ -1,6 +1,28 @@
 import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/au1.jpg';
+import { useForm } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useHooks from '../Hooks/useHooks';
 const Register = () => {
+
+    const { createUser } = useHooks();
+    // hookfrom 
+    const {
+        register,
+        handleSubmit,
+
+        formState: { errors },
+    } = useForm()
+    const onSubmit = (data) => {
+        const{email,password} = data;
+        createUser(email,password)
+        .then(result =>{
+            toast.success("Registration successful!");
+            console.log(result);
+        })
+    }
+    
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <div className="hero-overlay bg-opacity-60"></div>
@@ -8,27 +30,35 @@ const Register = () => {
                 <div className="max-w-m bg-white bg-opacity-20 backdrop-blur-base rounded-lg">
                     <div className="w-full max-w-md p-8 space-y-3 rounded-x">
                         <h1 className="text-2xl font-bold text-center">Register</h1>
-                        <form noValidate="" action="" className="space-y-6">
-                            <div className="space-y-1 text-sm">
-                                <label htmlFor="username" className="block dark:text-gray-600">Username</label>
-                                <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                            <div className="text-lg">
+                                <label htmlFor="username" className="block">Username</label>
+                                <input type="text" name="username" id="username" placeholder="Username" className="w-full px-4 py-3 rounded-md"
+                                    {...register("username", { required: true })} />
+                                {errors.username && <span className='text-red-600 font-bold'>!!!Username is required!!!</span>}
+
                             </div>
-                            <div className="space-y-1 text-sm">
-                                <label htmlFor="Email" className="block dark:text-gray-600">Email</label>
-                                <input type="email" name="email" id="Email" placeholder="Email" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                            <div className="text-lg">
+                                <label htmlFor="Email" className="block">Email</label>
+                                <input type="email" name="email" id="Email" placeholder="Email" className="w-full px-4 py-3 rounded-md"
+                                    {...register("email", { required: true })} />
+                                {errors.email && <span className='text-red-600 font-bold'>!!!Email is required!!!</span>}
                             </div>
-                            <div className="space-y-1 text-sm">
-                                <label htmlFor="username" className="block dark:text-gray-600">PhotoUrl</label>
-                                <input type="text" name="username" id="username" placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                            <div className="text-lg">
+                                <label htmlFor="photoUrl" className="block">PhotoUrl</label>
+                                <input type="text" name="photoUrl" id="photoUrl" placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md" />
                             </div>
-                            <div className="space-y-1 text-sm">
-                                <label htmlFor="password" className="block dark:text-gray-600">Password</label>
-                                <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600" />
+                            <div className="text-lg">
+                                <label htmlFor="password" className="block">Password</label>
+                                <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md"
+                                    {...register("password", { required: true })} />
+                                {errors.password && <span className='text-red-600 font-bold'>!!!Password is required!!!</span>}
                             </div>
                             <div className='text-center'>
                                 <button className='btn bg-orange-400 text-white outline-none border-none'>Sign up</button>
                             </div>
                         </form>
+
                         <div className='flex justify-center gap-2'>
                             <p className="text-lg text-center"> Already have an account? Please</p>
                             <Link to="/login"><a className="underline">Sign in</a></Link>
@@ -36,6 +66,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
