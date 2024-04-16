@@ -5,10 +5,16 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from '../Components/SocialLogin';
 import useHooks from '../Hooks/useHooks';
+import { useNavigate,useLocation } from 'react-router-dom';
+
 
 const Login = () => {
     const { signInUser } = useHooks();
     // console.log(signInUser);
+    const navigate = useNavigate()
+    const location = useLocation()
+    // console.log(Location);
+    const from = location?.state || '/'
 
     // hookfrom 
     const {
@@ -19,9 +25,16 @@ const Login = () => {
     const onSubmit = (data) => {
         const { email, password } = data;
         signInUser(email, password)
-            .then(result => {
+            // .then(result => {
+            //     toast.success("Login successful!");
+            //     console.log(result);
+            // })
+            .then(result =>{
                 toast.success("Login successful!");
-                console.log(result);
+                if(result.user){
+                    navigate(from)
+                   
+                }
             })
             .catch(error => {
                 toast.error("Login failed. Please try again."); // Display an error toast if registration fails
@@ -58,7 +71,7 @@ const Login = () => {
                             <p className="px-3 text-lg ">Login with social accounts</p>
 
                         </div>
-                       <SocialLogin></SocialLogin>
+                        <SocialLogin></SocialLogin>
                         <div className='flex justify-center gap-2'>
                             <p className="text-lg text-center"> Dont have an account?</p>
                             <Link to="/register"><a className="underline dark:text-gray-800">  Sign up</a></Link>

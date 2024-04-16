@@ -4,7 +4,7 @@ import Card from "./Card";
 const Cards = () => {
     const luxury = useLoaderData()
     const luxuryEstates = luxury.luxury_estates;
-    console.log(luxuryEstates);
+    // console.log(luxuryEstates);
 
     return (
         <div className="bg-orange-50 mt-10 mb-10">

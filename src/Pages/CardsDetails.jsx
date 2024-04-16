@@ -1,5 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
 
 const CardsDetails = () => {
     const cardInfo = useLoaderData()
@@ -36,6 +36,7 @@ const CardsDetails = () => {
                     </a>
                 </div>
             </section>
+            <ToastContainer />
         </div>
     );
 };

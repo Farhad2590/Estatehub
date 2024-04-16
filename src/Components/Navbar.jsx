@@ -1,8 +1,10 @@
 // import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import logo from "../assets/Logo.png"
+import useHooks from "../Hooks/useHooks";
 
 const Navbar = () => {
+    const { logout, user } = useHooks();
     const Navs =
         <>
             <Link to="/"><a>Home</a></Link>
@@ -32,7 +34,31 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login"><a className="btn">Log in</a></Link>
+                {
+                    user?.email ? <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img src={user.photoURL} alt={user.displayName} />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                            <li>
+                                <button className="btn btn-sm  btn-ghost">{user.displayName}</button>
+
+                            </li>
+                            <li>
+                                <button className="btn btn-sm  btn-ghost"
+                                    onClick={logout}
+                                >Logout</button>
+
+                            </li>
+                        </ul>
+                    </div>
+                        :
+                        <Link to='/login'>
+                            <button className="btn btn-sm  btn-ghost">Login</button>
+                        </Link>
+                }
             </div>
         </div>
     );
