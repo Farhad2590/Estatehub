@@ -17,12 +17,14 @@ import Updated from './Pages/Updated';
 import Completed from './Pages/Completed';
 import { HelmetProvider } from 'react-helmet-async';
 import UserProfile from './Pages/UserProfile';
+import Error from './Pages/Error';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: "/",
