@@ -1,5 +1,6 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router-dom";
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const CardsDetails = () => {
     const cardInfo = useLoaderData()
@@ -10,6 +11,9 @@ const CardsDetails = () => {
     const { image, estate_title, description, facilities, segment_name, status, area, price } = cardDetails
     return (
         <div>
+            <Helmet>
+                <title>Estate-Card-{id}</title>
+            </Helmet>
             <section className="dark:bg-gray-100 dark:text-gray-800">
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
                     <a rel="noopener noreferrer" href="#" className="block max-w-sm gap-3 mx-auto sm:max-w-full group hover:no-underline focus:no-underline lg:grid lg:grid-cols-12 dark:bg-gray-50">

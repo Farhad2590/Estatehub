@@ -5,12 +5,17 @@ import useHooks from "../Hooks/useHooks";
 
 const Navbar = () => {
     const { logout, user } = useHooks();
-    const Navs =
+    const Navs = user ? (
         <>
             <Link to="/"><a>Home</a></Link>
-            <Link to="/updated"><a>Update Profile</a></Link>
             <Link to="/completed"><a>Completed Deals</a></Link>
+            <Link to="/updated"><a>Update Profile</a></Link>
+            <Link to="/user"><a>User Profile</a></Link>
+            
         </>
+    ) : (
+        <Link to="/"><a>Home</a></Link>
+    );
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -26,26 +31,25 @@ const Navbar = () => {
                     <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-600">
                         <img src={logo} alt="" />
                     </div>
-                    <span className="self-center text-xl md:text-2xl lg:text-3xl font-semibold">GlamourEstateHub</span>
+                    <span className="self-center text-xl md:text-2xl lg:text-3xl font-semibold">EstateHub</span>
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex gap-4">
-               
-                    {Navs}
+
+                {Navs}
 
             </div>
             <div className="navbar-end">
                 {
                     user?.email ? <div className="dropdown dropdown-end">
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
+                            <div className="w-10 rounded-full tooltip tooltip-open text-black" data-tip={user.displayName}>
                                 <img src={user.photoURL} alt={user.displayName} />
                             </div>
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
                                 <button className="btn btn-sm  btn-ghost">{user.displayName}</button>
-
                             </li>
                             <li>
                                 <button className="btn btn-sm  btn-ghost"

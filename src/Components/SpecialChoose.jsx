@@ -13,7 +13,7 @@ const SpecialChoose = () => {
     return (
         <div className="bg-orange-50 my-10">
             <div data-aos="fade-right" data-aos-duration="1000" className="py-5">
-                <h1 className="text-3xl font-bold pt-5 px-5">GlamourEstateHub Services</h1>
+                <h1 className="text-3xl font-bold pt-5 px-5">EstateHub Services</h1>
                 <h6 className="text-xl font-medium pt-3 pb-5 px-5">Why Choose Us? lets see our Services</h6>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5">

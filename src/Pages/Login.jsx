@@ -8,6 +8,7 @@ import useHooks from '../Hooks/useHooks';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 
 const Login = () => {
@@ -57,6 +58,9 @@ const Login = () => {
     return (
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <div className="hero-overlay bg-opacity-60"></div>
+            <Helmet>
+                <title>EstateHub-Login</title>
+            </Helmet>
             <div className="hero-content  text-neutral-content">
                 <div className="max-w-m bg-white bg-opacity-20 backdrop-blur-base rounded-lg">
                     <div className="w-full max-w-md p-8 space-y-3 rounded-x">

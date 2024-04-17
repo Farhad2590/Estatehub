@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import auth from "../Firebase/FirebaseConfig";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, updateProfile } from "firebase/auth";
 import { signOut } from "firebase/auth/cordova";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,6 +22,16 @@ const FirebaseProvider = ({ children }) => {
     const createUser = (email, password) => {
         setLoader(true)
         return createUserWithEmailAndPassword(auth, email, password)
+    }
+    //Upddate User Profile
+    const updateUser = (name, image) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: image
+        })
+        .then(() =>{
+            setUser({...user,displayName:name,photoURL:image})
+        })
     }
     //Signin User
     const signInUser = (email, password) => {
@@ -64,7 +74,8 @@ const FirebaseProvider = ({ children }) => {
         githubSignin,
         logout,
         user,
-        loader
+        loader,
+        updateUser
     }
     return (
         <AuthContext.Provider value={allValues}>

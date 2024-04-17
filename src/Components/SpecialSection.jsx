@@ -18,7 +18,7 @@ const SpecialSection = () => {
     return (
         <div className="bg-gray-50 mt-10 mb-10">
             <div data-aos="fade-left" data-aos-duration="1000" className="py-5 lg:flex lg:flex-col items-end">
-                <h1 className="text-3xl font-bold pt-5 px-5">GlamourEstateHub Packages</h1>
+                <h1 className="text-3xl font-bold pt-5 px-5">EstateHub Packages</h1>
                 <h6 className="text-xl font-medium pt-3 pb-5 px-5">All Our Gifts With Your Luxury Estate</h6>
             </div>
             <div>

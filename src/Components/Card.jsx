@@ -18,7 +18,7 @@ const Card = ({ luxury_state }) => {
 
             <div className="card-details p-5" >
                 <div className="hero-overlay bg-opacity-30 rounded-lg">
-                    <div data-aos="fade-up-right" data-aos-duration="3000" className="pt-40 px-5">
+                    <div  className="pt-40 px-5">
                         <p className="text-white">{status}/{area}</p>
                         <h2 className="text-2xl text-white font-bold">{estate_title}</h2>
                     </div>

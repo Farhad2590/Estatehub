@@ -15,6 +15,9 @@ import FirebaseProvider from './FirbaseProvider/FirebaseProvider';
 import PrivateRoute from './Components/PrivateRoute';
 import Updated from './Pages/Updated';
 import Completed from './Pages/Completed';
+import { HelmetProvider } from 'react-helmet-async';
+import UserProfile from './Pages/UserProfile';
+
 
 const router = createBrowserRouter([
   {
@@ -49,6 +52,12 @@ const router = createBrowserRouter([
         </PrivateRoute>,
       },
       {
+        path: "/user",
+        element: <PrivateRoute>
+          <UserProfile></UserProfile>
+        </PrivateRoute>,
+      },
+      {
         path: "/completed",
         element: <PrivateRoute>
           <Completed></Completed>
@@ -61,7 +70,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <FirebaseProvider>
-      <RouterProvider router={router} />
+      <HelmetProvider>
+        <RouterProvider router={router} />
+      </HelmetProvider>
     </FirebaseProvider>
   </React.StrictMode>,
 )

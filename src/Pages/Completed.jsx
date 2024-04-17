@@ -1,8 +1,13 @@
+import { Helmet } from "react-helmet-async";
 
 
 const Completed = () => {
+
     return (
         <div>
+            <Helmet>
+                <title>EstateHub-Works</title>
+            </Helmet>
             <h2 className="pl-5 text-3xl">#Project1</h2>
             <section className="">
                 <div className="container max-w-6xl p-6 mx-auto space-y-6 sm:space-y-12">
@@ -53,6 +58,8 @@ const Completed = () => {
                     </section>
                 </div>
             </section>
+
+
         </div>
     );
 };

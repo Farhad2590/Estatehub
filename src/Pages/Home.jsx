@@ -10,6 +10,7 @@ import Slider from "../Components/Slider";
 import SpecialSection from '../Components/SpecialSection';
 import SpecialChoose from '../Components/SpecialChoose';
 import useHooks from '../Hooks/useHooks';
+import { Helmet } from 'react-helmet-async';
 
 
 const Home = () => {
@@ -27,6 +28,9 @@ const Home = () => {
   // }
   return (
     <div className="">
+      <Helmet>
+        <title>EstateHub-Home</title>
+      </Helmet>
       <Slider></Slider>
       <Cards></Cards>
       <SpecialSection></SpecialSection>
