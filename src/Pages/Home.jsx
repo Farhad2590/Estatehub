@@ -11,6 +11,7 @@ import SpecialSection from '../Components/SpecialSection';
 import SpecialChoose from '../Components/SpecialChoose';
 import useHooks from '../Hooks/useHooks';
 import { Helmet } from 'react-helmet-async';
+import { ToastContainer } from 'react-toastify';
 
 
 const Home = () => {
@@ -33,6 +34,7 @@ const Home = () => {
       <Cards></Cards>
       <SpecialSection></SpecialSection>
       <SpecialChoose></SpecialChoose>
+      <ToastContainer/>
     </div>
   );
 };

@@ -81,17 +81,7 @@ const Login = () => {
                                     {showPassword ? <FaRegEyeSlash /> : <FaEye />}
                                 </span>
                             </div>
-                            {/* <div className="text-lg relative">
-                            <label htmlFor="password" className="block dark:text-gray-600">Password</label>
-                                <input className=" w-full px-4 py-3 rounded-md"
-                                    type={showPassword ? "text" : "password"}
-                                    name="password"
-                                    placeholder="Enter Password"
-                                    id="" required />
-                                <span className="absolute top-11 right-3" onClick={() => setShowPassword(!showPassword)}>
-                                    {showPassword ? <FaRegEyeSlash /> : <FaEye />} 
-                                </span>
-                            </div> */}
+                            
                             <div className='text-center'>
                                 <button className='btn bg-orange-400 text-white outline-none border-none'>Sign In</button>
                             </div>

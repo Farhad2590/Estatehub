@@ -27,13 +27,15 @@ const Register = () => {
             return;
         }
         else if (!/[a-z]/.test(password)) {
-            toast('Password should have at lease one Uppercase letter')
+            toast('Password should have at lease one LowerCase letter')
             return;
         }
         createUser(email, password)
             .then(result => {
                 toast.success("Registration successful!");
                 console.log(result);
+            }).catch(error =>{
+                toast.error("Registration Failed")
             })
     }
 

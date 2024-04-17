@@ -15,7 +15,6 @@ const UserProfile = () => {
                     <div className=" space-y-3">
                         <h1 className="text-5xl text-white font-bold">Name: {user.displayName}</h1>
                         <h1 className="text-3xl text-white">Email: {user.email}</h1>
-
                     </div>
                 </div>
             </div>
