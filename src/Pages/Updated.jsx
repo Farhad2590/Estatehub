@@ -20,7 +20,7 @@ const Updated = () => {
         <div className="hero min-h-screen" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <Helmet>
-                <title>EstateHub-Updateuser</title>
+                <title>EstateHub-UpdateProfile</title>
             </Helmet>
             <div className="hero-content  text-neutral-content">
                 <div className="max-w-m bg-white bg-opacity-20 backdrop-blur-base rounded-lg">
