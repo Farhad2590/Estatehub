@@ -17,15 +17,13 @@ const Home = () => {
   const { loader } = useHooks()
 
   // console.log(location);
-  // if (loader) {
-  //   return <div className='text-center'>
-  //     <span className="loading loading-infinity loading-lg"></span>
-  //     <span className="loading loading-dots loading-lg"></span>
-  //     <span className="loading loading-ring loading-lg"></span>
-  //     <span className="loading loading-dots loading-lg"></span>
-  //     <span className="loading loading-infinity loading-lg"></span>
-  //   </div>
-  // }
+  if (loader) {
+    return <div className='text-center'>
+      <span className="loading loading-dots loading-lg"></span>
+      <span className="loading loading-ring loading-lg"></span>
+      <span className="loading loading-dots loading-lg"></span>
+    </div>
+  }
   return (
     <div className="">
       <Helmet>

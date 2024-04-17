@@ -6,9 +6,14 @@ const PrivateRoute = ({ children }) => {
     const { user, loader } = useHooks()
     const location = useLocation()
 
-    // if (loader) {
-    //     return <span className="loading loading-dots loading-lg"></span>
-    // }
+    if (loader) {
+        return <div className='text-center gap-2'>
+            <span className="loading loading-dots loading-lg"></span>
+            <span className="loading loading-ring loading-lg"></span>
+            <span className="loading loading-dots loading-lg"></span>
+        </div>
+
+    }
 
     if (!user) {
         return <Navigate to='/login' state={location?.pathname || '/'} />

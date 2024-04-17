@@ -30,14 +30,12 @@ const Updated = () => {
                             <div className="text-lg">
                                 <label htmlFor="name" className="block ">Name</label>
                                 <input type="name" name="name" id="name" placeholder="Name" className="w-full px-4 py-3 rounded-md "
-                                    {...register("name", { required: true })} />
-                                {errors.name && <span className='text-red-600 font-bold'>!!!Name is required!!!</span>}
+                                    {...register("name")} />
                             </div>
                             <div className="text-lg relative">
                                 <label htmlFor="photoUrl" className="block ">PhotoUrl</label>
                                 <input placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md "
-                                    {...register("photoUrl", { required: true })} />
-                                {errors.photoUrl && <span className='text-red-600 font-bold'>!!!Name is required!!!</span>}
+                                    {...register("photoUrl")} />
                             </div>
                             <div className='text-center'>
                                 <button className='btn bg-orange-400 text-white outline-none border-none'>Update</button>
