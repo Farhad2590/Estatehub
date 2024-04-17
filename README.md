@@ -1,11 +1,9 @@
 # Website Name : [EstateHub]((https://assignment09-ph.netlify.app/))
+
+
+[Live Link](https://assignment09-ph.netlify.app/)
 EstateHub is a comprehensive platform designed for real estate management and transactions.
 
-## Live Link : [EstateHub]((https://assignment09-ph.netlify.app/))
-
-## Description
-
-EstateHub is a versatile platform tailored to meet the needs of real estate professionals and enthusiasts. Whether you're looking to buy, sell, or manage properties, EstateHub offers a range of features to streamline your real estate journey.
 
 ## Features
 - **Home:** In Home route you will see all the cards and details.
@@ -16,7 +14,7 @@ EstateHub is a versatile platform tailored to meet the needs of real estate prof
   
 - **User Profile:** Display essential information such as your name, contact details, and profile picture. Without login you will not see this route.
 
--**Refistration and Login:** Registration and login page for Create Profile and Login.
+- **Refistration and Login:** Registration and login page for Create Profile and Login.
 
 ## Packages
 - **[AOS Packages](https://www.npmjs.com/package/aos)**
