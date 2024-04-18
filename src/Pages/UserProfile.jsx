@@ -11,7 +11,7 @@ const UserProfile = () => {
             </Helmet>
             <div className="hero min-h-screen animate__animated animate__zoomInDown">
                 <div className="hero-content flex-col lg:flex-row">
-                    <img src={user.photoURL} className="max-w-sm rounded-lg shadow-2xl" />
+                    <img src={user.photoURL} className=" w-20 lg:w-60 rounded-lg shadow-2xl" />
                     <div className=" space-y-3">
                         <h1 className="text-2xl lg:text-5xl text-white font-bold">Name: {user.displayName}</h1>
                         <h1 className="text-xl lg:text-3xl text-white">Email: {user.email}</h1>
