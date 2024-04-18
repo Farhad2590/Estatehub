@@ -28,12 +28,12 @@ const Updated = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                             <div className="text-lg">
                                 <label htmlFor="name" className="block ">Name</label>
-                                <input type="name" name="name" id="name" placeholder="Name" className="w-full px-4 py-3 rounded-md "
+                                <input type="name" name="name" id="name" placeholder="Name" className="w-full px-4 py-3 text-black rounded-md "
                                     {...register("name")} />
                             </div>
                             <div className="text-lg relative">
                                 <label htmlFor="photoUrl" className="block ">PhotoUrl</label>
-                                <input placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md "
+                                <input placeholder="PhotoUrl" className="w-full px-4 py-3 rounded-md text-black"
                                     {...register("photoUrl")} />
                             </div>
                             <div className='text-center'>

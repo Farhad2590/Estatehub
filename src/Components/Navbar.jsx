@@ -3,7 +3,9 @@ import { Link } from "react-router-dom";
 import logo from "../assets/Logo.png"
 import useHooks from "../Hooks/useHooks";
 
+
 const Navbar = () => {
+    const altImage  = <img src="https://i.ibb.co/7vXPB2c/pic4.jpg" alt="" srcset="" />
     const { logout, user } = useHooks();
     const Navs = user ? (
         <>
@@ -46,7 +48,7 @@ const Navbar = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-50 p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <button className="btn btn-sm  btn-ghost">{user.displayName}</button>
+                                <button className="btn btn-sm  btn-ghost">{user.displayName }</button>
                             </li>
                             <li>
                                 <button className="btn btn-sm  btn-ghost"

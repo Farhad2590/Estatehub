@@ -22,3 +22,4 @@ EstateHub is a comprehensive platform designed for real estate management and tr
 - **[React Hook From](https://react-hook-form.com/)**
 - **[React Helmet](https://www.npmjs.com/package/react-helmet)**
 - **[React Fast Marquee](https://www.npmjs.com/package/react-fast-marquee)**
+- **[Swiper Slider](https://swiperjs.com/)**
