@@ -27,22 +27,20 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <a className="flex">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full dark:bg-violet-600">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-ful">
                         <img src={logo} alt="" />
                     </div>
                     <span className="self-center text-xl md:text-2xl lg:text-3xl font-semibold">EstateHub</span>
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex gap-4">
-
                 {Navs}
-
             </div>
             <div className="navbar-end">
                 {
                     user?.email ? <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full tooltip tooltip-open text-black" data-tip={user.displayName}>
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar" title={user.displayName}>
+                            <div className="w-10 rounded-full text-black">
                                 <img src={user.photoURL} alt={user.displayName} />
                             </div>
                         </label>

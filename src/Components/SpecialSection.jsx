@@ -1,5 +1,5 @@
 import special1 from '../assets/Special1.jpg'
-import special2 from '../assets/Special2.png'
+import special2 from '../assets/Special2.jpg'
 import special3 from '../assets/Special3.png'
 import Marquee from "react-fast-marquee";
 import { IoIosFitness } from "react-icons/io";

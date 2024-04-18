@@ -9,16 +9,20 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2'
+// or via CommonJS
+// const Swal = require('sweetalert2')
 
 
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
     const { signInUser } = useHooks();
-    // console.log(signInUser);
+
+    
     const navigate = useNavigate()
     const location = useLocation()
-    // console.log(Location);
+
     const from = location?.state || '/'
 
     // hookfrom 
@@ -42,7 +46,12 @@ const Login = () => {
         }
         signInUser(email, password)
             .then(result => {
-                toast.success("Login successful!");
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Log in successful',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
                 if (result.user) {
                     navigate(from)
                 }
@@ -67,21 +76,21 @@ const Login = () => {
                         <h1 className="text-2xl font-bold text-center">Login</h1>
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                             <div className="text-lg">
-                                <label htmlFor="email" className="block dark:text-gray-600">Email</label>
-                                <input type="email" name="email" id="Email" placeholder="Email" className="w-full px-4 py-3 rounded-md "
+                                <label htmlFor="email" className="block ">Email</label>
+                                <input type="email" name="email" id="Email" placeholder="Email" className="w-full text-black px-4 py-3 rounded-md "
                                     {...register("email", { required: true })} />
                                 {errors.email && <span className='text-red-600 font-bold'>!!!Email is required!!!</span>}
                             </div>
                             <div className="text-lg relative">
-                                <label htmlFor="password" className="block dark:text-gray-600">Password</label>
-                                <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md "
+                                <label htmlFor="password" className="block ">Password</label>
+                                <input type={showPassword ? "text" : "password"} name="password" id="password" placeholder="Password" className="text-black w-full px-4 py-3 rounded-md "
                                     {...register("password", { required: true })} />
                                 {errors.password && <span className='text-red-600 font-bold'>!!!Password is required!!!</span>}
                                 <span className="absolute top-11 right-3" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? <FaRegEyeSlash /> : <FaEye />}
                                 </span>
                             </div>
-                            
+
                             <div className='text-center'>
                                 <button className='btn bg-orange-400 text-white outline-none border-none'>Sign In</button>
                             </div>

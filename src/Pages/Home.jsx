@@ -26,7 +26,7 @@ const Home = () => {
     </div>
   }
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       <Helmet>
         <title>EstateHub-Home</title>
       </Helmet>

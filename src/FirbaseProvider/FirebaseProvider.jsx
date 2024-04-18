@@ -4,6 +4,10 @@ import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword,
 import { signOut } from "firebase/auth/cordova";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2'
+// // or via CommonJS
+// const Swal = require('sweetalert2')
+
 
 
 export const AuthContext = createContext(null)
@@ -29,9 +33,24 @@ const FirebaseProvider = ({ children }) => {
             displayName: name,
             photoURL: image
         })
-        .then(() =>{
-            setUser({...user,displayName:name,photoURL:image})
-        })
+
+            .then(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Updated Successfully',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                setUser({ ...user, displayName: name, photoURL: image })
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops... Something went wrong",
+                    text: "Something went wrong!",
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+            })
     }
     //Signin User
     const signInUser = (email, password) => {
